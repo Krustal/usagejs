@@ -1,0 +1,23 @@
+{
+  "name": "usagejs",
+  "version": "0.0.1",
+  "description": "A simple library for tracking user actions and events",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krustal/usagejs"
+  },
+  "keywords": [
+    "tracking",
+    "localstorage"
+  ],
+  "author": "Byron McMullen <byronsm@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krustal/usagejs/issues"
+  },
+  "homepage": "https://github.com/krustal/usagejs"
+}
