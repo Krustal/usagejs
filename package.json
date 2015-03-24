@@ -1,6 +1,6 @@
 {
   "name": "usagejs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A simple library for tracking user actions and events",
   "main": "index.js",
   "scripts": {
