@@ -1,4 +1,7 @@
 # UsageJS
+
+[![Build Status](https://travis-ci.org/Krustal/usagejs.svg?branch=master)](https://travis-ci.org/Krustal/usagejs)
+
 > *A simple library for tracking user actions and events.*
 
 ## Features
