@@ -19,9 +19,9 @@ testing is less rigourous so expect that to not be as stable.
 **Example**: localStorage backed (using Browserify)
 
 ```JavaScript
-var Usage = require('usagejs')['Usage'];
+var Usage = require('usagejs');
 
-var usage = new Usage({
+var usage = Usage.create({
   storage: {
     write: function(data) {
       localStorage.setItem('history', JSON.stringify(data));
@@ -46,7 +46,7 @@ general behavior.
 
 ## API
 
-```new Usage(properties)```
+```new Usage(properties)``` or ```Usage.create(properties)```
 
 Creates a new Usage object.
 

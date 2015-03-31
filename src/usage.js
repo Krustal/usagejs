@@ -36,6 +36,10 @@ require('twix');
     this.backup();
   };
 
+  Usage.create = function(properties){
+    return new Usage(properties);
+  }
+
   // Fetches history from whatever storage mechanism is indicated at the given
   // key. It then returns an object. Takes a single object as a parameter with
   // the following keys.
@@ -69,6 +73,6 @@ require('twix');
 
   Usage.fn = Usage.prototype;
 
-  exports.Usage = Usage;
+  exports = Usage;
   return exports;
 });
