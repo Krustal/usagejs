@@ -1,4 +1,4 @@
-var Usage = require('../../src/usage.js')['Usage'];
+var Usage = require('../../src/usage.js');
 var sinon = require('sinon');
 var _ = require('underscore');
 var moment = require('moment');
@@ -19,7 +19,7 @@ describe('usage.js', function() {
   };
 
   function generalUsage(){
-    return new Usage(genConfig);
+    return Usage.create(genConfig);
   }
 
   beforeEach(function() {

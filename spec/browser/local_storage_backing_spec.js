@@ -1,4 +1,4 @@
-var Usage = require('../../src/usage.js')['Usage'];
+var Usage = require('../../src/usage.js');
 var sinon = require('sinon');
 var moment = require('moment');
 require('twix');
