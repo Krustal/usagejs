@@ -1,5 +1,12 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
+- '0.12'
+- '0.11'
+- '0.10'
+deploy:
+  provider: npm
+  email: byronsm@gmail.com
+  api_key:
+    secure: XGc/hcdyQ+lWqka2pb127ZWxHA+1Q26H+yj0kKavoerIKWh2K3RKfA7HRSawDs6obHzH+WdSkOX8qIgU30cWS/81KlqEGxLhOTzwoRHjtJS6K33Qgn2p6VEZ9SUnVcYAdmsvx0auXNxj2cAGdf8vRQneWjHk2+QjDKx/NLqzbKQ=
+  on:
+    tags: true
