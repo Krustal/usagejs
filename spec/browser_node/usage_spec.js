@@ -3,6 +3,7 @@ var sinon = require('sinon');
 var _ = require('underscore');
 var moment = require('moment');
 require('twix');
+var context = describe;
 
 describe('usage.js', function() {
 
@@ -106,6 +107,55 @@ describe('usage.js', function() {
     it("automatically backs itself up to storage", function(){
       usage.log('stored in localStorage');
       expect(storage.events[0].type).toEqual('stored in localStorage')
+    });
+  });
+
+  describe('eventsWithin', function(){
+    var usage, firstTime, secondTime, thirdTime;
+
+    beforeEach(function(){
+      usage = generalUsage();
+
+      firstTime = moment();
+      usage.log('click');
+
+      this.clock.tick(moment.duration(2, 'days').asMilliseconds());
+
+      secondTime = moment();
+      usage.log('click', { item: 'car' });
+      usage.log('copy');
+
+      this.clock.tick(moment.duration(2, 'days').asMilliseconds());
+
+      thirdTime = moment();
+      usage.log('click');
+      usage.log('open');
+    });
+
+    context('when just passed a date range', function(){
+      it('returns events in that range', function(){
+        expect(usage.eventsWithin(firstTime.twix(secondTime)).length).toEqual(3);
+      });
+    });
+
+    context('when passed date range and type', function(){
+      it('returns events of that type occuring within the range', function(){
+        expect(usage.eventsWithin(secondTime.twix(thirdTime), 'copy').length).toEqual(1);
+      });
+    });
+
+    context('when passed date range and multiple types', function(){
+      it('returns events of that type occuring within the range', function(){
+        expect(usage.eventsWithin(firstTime.twix(thirdTime), ['copy', 'open']).length).toEqual(2);
+      });
+    });
+
+    context('when given a function for further reduction', function(){
+      it('returns only qualifying events within the time range', function(){
+        expect(usage.eventsWithin(firstTime.twix(thirdTime), ['click', 'open'], function(event){
+          return event.properties.item === 'car'
+        }).length).toEqual(1);
+      });
     });
   });
 });

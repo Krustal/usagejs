@@ -57,11 +57,26 @@ require('twix');
     this.events.push({
       time: moment().valueOf(),
       type: type,
-      properties: properties
+      properties: properties || {}
     });
     this.backup();
     return this;
-  }
+  };
+
+  Usage.prototype.eventsWithin = function(duration, type, cb) {
+    return _.select(this.events, function(event) {
+      var valid = true;
+      valid = valid && duration.contains(event.time);
+      if(typeof type !== 'undefined') {
+        type = type && _.flatten([type])
+        valid = valid && _.contains(type, event.type);
+      }
+      if(cb) {
+        valid = valid && cb(event);
+      }
+      return valid;
+    });
+  };
 
   Usage.prototype.serialize = function(){
     return {events: this.events, lastCleaned: this.lastCleaned};
